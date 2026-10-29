@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">architecture-design</title>
+  <desc id="desc">A layered architecture graph with connected nodes.</desc>
+  <defs>
+    <linearGradient id="background" x1="64" y1="48" x2="448" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101b31"/>
+      <stop offset="1" stop-color="#07101f"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="114" y1="112" x2="396" y2="398" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67e8f9"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="182" y1="173" x2="328" y2="337" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fde68a"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#020617" flood-opacity=".55"/>
+    </filter>
+  </defs>
+
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#background)"/>
+  <path d="M94 118H418M94 166H418M94 214H418M94 262H418M94 310H418M94 358H418M94 406H418" stroke="#94a3b8" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M118 94V418M166 94V418M214 94V418M262 94V418M310 94V418M358 94V418M406 94V418" stroke="#94a3b8" stroke-opacity=".08" stroke-width="2"/>
+
+  <g filter="url(#shadow)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M128 177L256 108L384 177L256 246L128 177Z" fill="#0f2740" stroke="url(#cyan)" stroke-width="8"/>
+    <path d="M128 177V333L256 404L384 333V177" fill="none" stroke="#38bdf8" stroke-opacity=".72" stroke-width="8"/>
+    <path d="M128 333L256 262L384 333" fill="none" stroke="#38bdf8" stroke-opacity=".55" stroke-width="8"/>
+
+    <path d="M256 108V246M256 262V404" stroke="#e0f2fe" stroke-opacity=".75" stroke-width="6"/>
+    <path d="M128 177L256 246L384 177M128 333L256 404L384 333" fill="none" stroke="#a5f3fc" stroke-opacity=".62" stroke-width="5"/>
+
+    <circle cx="128" cy="177" r="18" fill="#082f49" stroke="#67e8f9" stroke-width="7"/>
+    <circle cx="256" cy="108" r="18" fill="#082f49" stroke="#67e8f9" stroke-width="7"/>
+    <circle cx="384" cy="177" r="18" fill="#082f49" stroke="#67e8f9" stroke-width="7"/>
+    <circle cx="128" cy="333" r="18" fill="#082f49" stroke="#67e8f9" stroke-width="7"/>
+    <circle cx="384" cy="333" r="18" fill="#082f49" stroke="#67e8f9" stroke-width="7"/>
+
+    <rect x="190" y="184" width="132" height="94" rx="18" fill="#17243a" stroke="url(#amber)" stroke-width="8"/>
+    <path d="M216 214H296M216 236H280M216 258H264" stroke="#fef3c7" stroke-width="8"/>
+    <circle cx="302" cy="258" r="7" fill="#f59e0b" stroke="none"/>
+  </g>
+
+  <text x="256" y="456" text-anchor="middle" fill="#bae6fd" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="4">ARCHITECTURE DESIGN</text>
+</svg>
