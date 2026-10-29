@@ -42,29 +42,13 @@
 | 反例审查 | 针对双提交、旧执行、外部副作用、版本切换、导入、删除、容量等风险构造可观察结果 |
 | 证据边界 | 区分已决定、建议、待验证和阻断；没有实测时不把设计预算写成性能保证 |
 
-## 快速开始
+## 安装
 
-### MiniMax Code
+把下面的仓库地址直接交给 Agent，并告诉它“安装这个 Skill”即可：
 
-Windows PowerShell：
+https://github.com/Luo-root/architecture-design
 
-```powershell
-git clone https://github.com/Luo-root/architecture-design.git "$env:USERPROFILE\.minimax\skills\architecture-design"
-```
-
-macOS / Linux：
-
-```bash
-git clone https://github.com/Luo-root/architecture-design.git ~/.minimax/skills/architecture-design
-```
-
-### 遵循 Agent Skills 目录约定的宿主
-
-```bash
-git clone https://github.com/Luo-root/architecture-design.git ~/.claude/skills/architecture-design
-```
-
-安装后，让 Agent 读取 `SKILL.md`，再用自然语言描述任务即可。Skill 的核心文件只依赖 Markdown，不需要额外运行时依赖。
+安装完成后，让 Agent 读取 `SKILL.md`，再用自然语言描述任务即可。Skill 的核心文件只依赖 Markdown，不需要额外运行时依赖。
 
 ## 怎么使用
 
