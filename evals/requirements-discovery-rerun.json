@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "suite": "requirements-discovery",
+  "round": 2,
+  "run_date": "2026-10-29",
+  "status": "PASS",
+  "case_spec": "requirements-discovery-cases.json",
+  "case_spec_sha256": "9091c14a8a6ef9598a97b130dba75dc675a6058acc0a5f958adbe83ea206a6cd",
+  "historical_results": "requirements-discovery-results.json",
+  "historical_results_sha256": "0424c942642edfe550db6645c736589e52b0a93cc4b016ecf8a8c7b44fdf4ad5",
+  "historical_outcome": { "pass": 16, "fail": 2, "unverified": 0, "supplemental_id_continuity": "FAIL" },
+  "patch": {
+    "problem": "跨阶段整理时重建编号清单，导致旧ID改义；反馈后只修了被点名的局部，其他旧项仍缺映射。",
+    "evidence": "历史 mall-2 到 mall-3 的 REQ-04/F-02 改义，mall-4 复用 F-08/F-09；一次辅助纠错仍遗漏售后、定时维护、审计和隐私条目的历史落点。",
+    "attribution": "旧的稳定ID约束正确，历史执行未遵守；本轮用户要求继续解决，保留旧约束，新增跨轮恢复账本、分类变更、更新引用、交付前逐项比对的具体工作步骤。没有把执行偏差改称错误的旧指令。",
+    "rationale": "先恢复同一份账本再增量更新，避免从本轮叙述顺序重建ID；对所有旧项核对，覆盖仅修局部仍遗漏其他映射的失败路径。",
+    "source_files": ["SKILL.md", "references/requirements-discovery.md", "references/feature-contract.md"]
+  },
+  "source_sha256": {
+    "SKILL.md": "6615dcbeec5933cbe6d3624226534157afaf57681e57d201dc0e0c3bc53f7c52",
+    "references/requirements-discovery.md": "b2c4cb786035edb8f28384c20bd8f7a3f6f8074b7f180faf913d59c6c425c421",
+    "references/feature-contract.md": "d0585388b33b419ae419353111d047570d6dd651f0258a028791ad3daf76ca53",
+    "references/composition-and-review.md": "11741bcf7ecd8b6996986995f9a0ef6772872144026979448b422da83b7feaca",
+    "references/mechanism-decisions.md": "34322f395acb1b3fb5c67bff3d9ad1c0ca2c0247c20151c7548382682f9ad284"
+  },
+  "method": "新上下文加载新基线Skill，商城从mall-1开始连续四轮、逐轮追加相同用户输入；只提供当轮和既有输入，不提供失败提示、评分条件或未来答案。明确局部需求使用另一个新上下文。执行者记录实际输入与完整答复，由独立verifier按原标准判读。",
+  "output_records": ["runs/requirements-round2-mall.json", "runs/requirements-round2-local.json"],
+  "case_input_policy": "固定原18项检查和原输入；若执行者追问固定输入之外的必要口径，记录其未决范围，不修改通过标准或把未决事实伪装为已确认。",
+  "feedback_assisted_correction": false,
+  "review": {
+    "status": "PASS",
+    "checks": [
+      {
+        "case_id": "mall-1",
+        "statuses_by_check_index": ["PASS", "PASS"],
+        "evidence": [
+          "四问覆盖商品类型、单卖家或多商家、首版购买流程及使用规模。",
+          "标记 CLARIFYING；功能仅列为未确认候选，未自行确认业务模式、角色或技术栈，未定案架构。"
+        ]
+      },
+      {
+        "case_id": "mall-2",
+        "statuses_by_check_index": ["PASS", "PASS", "PASS", "PASS"],
+        "evidence": [
+          "需求账本复用实体手账和贴纸、消费者与管理员、线下收款及快递流程、排除范围和交付约束，没有重复询问这些事实。",
+          "更新六项需求、六项功能及关联，并提出身份、现货或制作、金额确定方式、取消退款四类剩余问题。",
+          "访问量未知未成为全局阻塞；明确不要求精确并发指标，允许商品查看和维护继续细化。",
+          "整体保持 CLARIFYING；身份、库存和售后规则待确认，没有将相关架构定案。"
+        ]
+      },
+      {
+        "case_id": "mall-3",
+        "statuses_by_check_index": ["PASS", "PASS", "PASS", "PASS"],
+        "evidence": [
+          "直接给出需求基线、功能清单及架构概要；主流程进入 DESIGNABLE，仅退款金额、回库和保留期起算等分支继续澄清。",
+          "容量明标 ASSUMED、未经实测；两秒响应保持待测目标，没有声称容量或生产保证。",
+          "功能逐项关联 REQ；角色、线下交易和物流主流程、既有排除项均保留，交付及质量约束另行覆盖。",
+          "概要衔接24小时库存预占、状态竞争、收款去重、订单归属、耐久提交和重启补扫；明确不是完整开发契约，验收均未执行。"
+        ]
+      },
+      {
+        "case_id": "mall-4",
+        "statuses_by_check_index": ["PASS", "PASS", "PASS", "PASS"],
+        "evidence": [
+          "明确数字商品决定替代实物范围；原需求和功能编号保留变更说明，库存及快递职责退役，历史没有无痕覆盖。",
+          "区分保留、调整、退役和新增；重审库存、配送个人信息、物流、交付及清理方案，新增 F-15 受控下载、F-16 文件发布和相应设计建议。",
+          "DEC-06 要求每次下载及续传检查登录身份、订单归属、收款状态、权益和版本；文件置于静态目录外。A-02 增加未付款、跨账号复制链接、伪造文件ID及续传越权检查，链接本身不授予权限。",
+          "明确沿用角色、排除项、团队与时间、单机预算、容量假设和响应目标；问题仅涉及退款、购买权益及文件规模，没有重做全产品访谈或执行删除。"
+        ]
+      },
+      {
+        "case_id": "clear-local-change",
+        "statuses_by_check_index": ["PASS", "PASS", "PASS", "PASS"],
+        "evidence": [
+          "直接判为 DESIGNABLE，无追加问题，给出局部八项契约及同步遍历机制。",
+          "沿用现有 TypeScript 界面、存储模块和数据格式，没有引入账号、同步、网络服务、搜索引擎或迁移。",
+          "明确大小写转换后的字面包含、空词全部、无匹配空列表、仅标题筛选、只读保序；搜索词变化和保存成功后按当前最新已保存列表重算。",
+          "保留5000条规模；100ms 标为 VERIFY、尚未测量，给出测量范围和失败后复测路径，没有声称达标。"
+        ]
+      }
+    ],
+    "total": { "pass": 18, "fail": 0, "unverified": 0 },
+    "supplemental": {
+      "id": "ID-CONTINUITY",
+      "status": "PASS",
+      "counted_in_original_18": false,
+      "evidence": [
+        "逐项比较四轮实际内容：REQ-01、03 始终对应商城目标及购买交付流程，第四轮显式更新为数字商品；REQ-02、04、05、06、11 沿用角色、排除范围、交付、容量和质量事项。REQ-06 从未知细化为带标签的容量假设，没有变成实测结论。",
+        "REQ-07 库存规则明确退役；REQ-08 仍为金额规则，显式移除运费；REQ-09 仍为取消退款，数字商品退款条件待定；REQ-10 仍为隐私保留，配送条款退役、订单保留继续；REQ-12 仍为验收范围。新增 REQ-13、14 使用未占用编号，分别标为用户确认的受控下载和有依据的派生文件管理需求。",
+        "F-01、02、03、05、06 保持查看商品、下单、维护商品、确认收款、查单的原业务动作；F-04 快递交付、F-08 库存明确退役，未改指下载。F-07 登录沿用；F-09 保留取消、过期规则待定；F-10～12 保留退款申请、退款确认及人工联系；F-13、14 保留清理和完成时点事项并移出配送范围。新增 F-15、16 分别承接受控下载与文件发布。",
+        "DEC-01、02 沿用 Go 单体及 SQLite 候选；DEC-03 明示保留事务幂等、移出库存；DEC-04 配送信息方案退役。新增 DEC-05 付款与权益共同提交、DEC-06 私有文件及逐请求授权，未占用旧号。",
+        "A-01 主流程、A-02 授权、A-04 重复确认与取消、A-05 退款竞争、A-06 保留周期、A-07 性能恢复均有第四轮落点及变更说明；A-03 库存测试明确退役；A-08 文件发布与联合恢复为新号。未发现错误复用、旧项无落点或指向不存在编号的引用。",
+        "判定依据是各编号的实际业务含义、变更说明和承接关系，未以输出自称沿用编号或编号数量相等作为通过证据。该补充项不计入原18项分母。"
+      ]
+    },
+    "source_patch_review": "PASS（仅源码）",
+    "remaining_issues": [],
+    "limits": [
+      "结论仅限本次完整、单次无反馈合成运行；固定判据来自 requirements-discovery-cases.json。",
+      "本轮18项及独立 ID-CONTINUITY 通过，不追溯改判此前16/18的历史结果，也不构成多次运行的统计稳定性证据。",
+      "退款条件与撤权、下载权益期限和更新权、文件规模、24小时关闭及保留期起算仍有明确未决部分；文件管理标为派生，相关机制标为设计建议，本判定未将其当作已确认业务决定。",
+      "未验证真实访谈UI、商城实现、实际性能、生产恢复、费用预算、跨宿主行为或模型必然遵守规则的能力。",
+      "独立审读只读输出，没有修改测试记录或源文件。"
+    ]
+  },
+  "static_checks": {
+    "all_five_case_inputs_match_fixed_spec": true,
+    "historical_results_unchanged": true,
+    "evaluated_skill_source_unchanged": true,
+    "installed_skill_files_match": 5,
+    "original_eight_feature_contract_definitions_unchanged": true,
+    "frontmatter_utf8_lf_and_local_links": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "limits": [
+    "原失败记录保留；本次为修改工作步骤后的新基线重跑，不能覆盖或提升旧分数。",
+    "只有一次新基线合成多轮执行及一个明确局部案例，不提供统计稳定性或所有领域覆盖保证。",
+    "提问以文字表达，不测试真实问卷UI；不验证商城实现、实际性能、真实支付、部署或跨宿主行为。",
+    "拆分合并的任意组合没有穷举，判断实际样本中出现的追踪关系。"
+  ]
+}
